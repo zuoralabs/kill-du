@@ -31,3 +31,9 @@ Did not use flock because MacOS doesn't come with it, and don't want to have to 
   If the latest run was in the last 10s, and the PID is not the current PID, then quit.
 
 - [ ] *Allow certain users to run du.*
+
+- [ ] *Limit number of running instances*
+      Presently, the number of running kill-du instances could become infinite if
+      many instances are stuck. Suppose, e.g., one instance is stuck on killing
+      a process indefinitely, and another instance spins up and gets stuck,
+      etc.

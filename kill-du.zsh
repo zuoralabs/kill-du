@@ -18,6 +18,21 @@ function exit_if_last_run_recent {
     fi
 }
 
+function pcpu {
+    pgrep -x $1 | xargs -J % ps -o pcpu | tail +2
+}
+
+function pkill_if_high_pcpu {
+    local _pcpu
+    _pcpu=$(pcpu $1)
+    if [[ -z $_pcpu ]]; then
+        return
+    fi
+
+    if (( 99.0 <= $_pcpu )); then
+        pkill -x $1 -U 0
+    fi
+}
 
 exit_if_last_run_recent
 
@@ -31,5 +46,7 @@ while true; do
     fi
     sleep 1
     pkill -x du -U 0
+    pkill_if_high_pcpu dns-updater
+    pkill_if_high_pcpu configd
     date $fmt > $LAST_RUN_FILE
 done

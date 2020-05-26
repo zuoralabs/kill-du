@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
-LAST_RUN_FILE=/var/tmp/personal.andrew-lee.kill-du.last-run
-PIDFILE=/var/tmp/personal.andrew-lee.kill-du.pid
+LAST_RUN_FILE=/var/tmp/personal.andrew-lee.killer-daemon.last-run
+PIDFILE=/var/tmp/personal.andrew-lee.killer-daemon.pid
 
 fmt=+'%Y-%m-%d-%H-%M-%S'
 

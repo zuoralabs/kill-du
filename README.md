@@ -1,4 +1,4 @@
-# Kill du
+# Killer Daemon
 
 Launch daemon to kill du processes run by root on MacOS robustly, every second.
 

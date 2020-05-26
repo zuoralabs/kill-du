@@ -3,10 +3,10 @@
 <plist version="1.0">
 <dict>
     <key>Label</key>
-    <string>person.andrew-lee.kill-du</string>
+    <string>person.andrew-lee.killer-daemon</string>
     <key>ProgramArguments</key>
     <array>
-        <string>/opt/local/bin/kill-du.zsh</string>
+        <string>/opt/local/bin/killer-daemon.zsh</string>
     </array>
     <key>StartInterval</key>
     <integer>60</integer>

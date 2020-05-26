@@ -18,8 +18,23 @@ function exit_if_last_run_recent {
     fi
 }
 
+function read_config {
+    local cfg
+    local pre_comment
+    local line
+
+    cfg=$(< /etc/killer-daemon_config)
+
+    for line in ${(f)cfg}; do
+        pre_comment=( ${(s/#/)line} )
+        if [[ -n ${(z)pre_comment[1]} ]]; then
+            print $pre_comment[1]
+        fi
+    done
+}
 
 exit_if_last_run_recent
+config=( $( read_config ) )
 
 echo 'does not appear to already be running; entering loop'
 echo $$ > $PIDFILE
@@ -30,6 +45,9 @@ while true; do
         exit
     fi
     sleep 1
-    pkill -x du -U 0
+    for proc in $config; do
+        print killing $proc
+        pkill -x $proc -U 0
+    done
     date $fmt > $LAST_RUN_FILE
 done

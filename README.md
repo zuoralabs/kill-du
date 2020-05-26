@@ -1,20 +1,20 @@
 # Killer Daemon
 
-Launch daemon to kill du processes run by root on MacOS robustly, every second.
+Launch daemon to kill selected processes run by root on MacOS robustly, every second.
 
 If the daemon dies it will restart.
 
-This is useful if du is causing your system to overheat.
+This is useful if some processes are causing your system to overheat.
 
 
 ## WARNING
 
-As a side effect, no one seems to be able to run du while this daemon is active.
+As a side effect, no one seems to be able to run processes on the kill list while this daemon is active.
 
 
 ## Installation
 
-Run `sudo ./install.zsh`. This will install files to `/opt/local/bin` and  `/Library/LaunchDaemons`
+Run `sudo ./install.zsh`. This will install files to `/opt/local/bin` and  `/Library/LaunchDaemons`, create `/etc/killer-daemon_config` if it doesn't exist,
 then load the launch daemon.
 
 Put the process names you want to kill in `/etc/killer-daemon_config`, one name per line.
